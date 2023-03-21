@@ -10,26 +10,28 @@ jobs:
 
   # ~~~~~~~~~~~~~~~~~~ Cypress v9 and below (using Legacy configuration) ~~~~~~~~~~~~~~~~~~~ #
 
-  start-v9:
-    # example where instead of forming the default "cypress run ..."
-    # the user can specify their own command
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@v3
+  # start-v9:
+  #   # example where instead of forming the default "cypress run ..."
+  #   # the user can specify their own command
+  #   runs-on: ubuntu-22.04
+  #   steps:
+  #     - name: Checkout 🛎
+  #       uses: actions/checkout@v3
 
-      - name: Custom tests 🧪
-        uses: ./
-        with:
-          command: npm run custom-test
-          working-directory: examples/v9/custom-command
+  #     - name: Custom tests 🧪
+  #       uses: ./
+  #       with:
+  #         command: npm run custom-test
+  #         working-directory: examples/v9/custom-command
 
-      - name: Show saved file 🖨
-        run: cat examples/v9/custom-command/results.json
+  #     - name: Show saved file 🖨
+  #       run: cat examples/v9/custom-command/results.json
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Cypress v10 and higher ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
   start:
+    env:
+      DEBUG: '@cypress/github-action'
     # example where instead of forming the default "cypress run ..."
     # the user can specify their own command
     runs-on: ubuntu-22.04
@@ -42,6 +44,23 @@ jobs:
         with:
           command: npm run custom-test
           working-directory: examples/custom-command
+          headed: wrong
+          record: wrong
+          parallel: wrong
+          quiet: wrong
+          component: wrong
+          command-prefix: wrong
+          group: wrong
+          tag: wrong
+          config: wrong
+          spec: wrong
+          config-file: wrong
+          project: wrong
+          browser: wrong
+          auto-cancel-after-failures: wrong
+          env: wrong=wrong2
+          ci-build-id: wrong
+
 
       - name: Show saved file 🖨
         run: cat examples/custom-command/results.json
