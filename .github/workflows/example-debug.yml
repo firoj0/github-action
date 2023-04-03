@@ -20,3 +20,4 @@ jobs:
           DEBUG: '@cypress/github-action'
         with:
           working-directory: examples/basic
+          browser: chrome
