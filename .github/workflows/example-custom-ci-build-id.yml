@@ -122,5 +122,5 @@ jobs:
           command: |
             npx cypress run --record --parallel \
               --ci-build-id ${{ needs.prepare.outputs.uuid }} \
-              --group "2 - all tests"
+              --group "2 - all tests" --browser chrome
           working-directory: examples/recording
