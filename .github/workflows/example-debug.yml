@@ -18,4 +18,5 @@ jobs:
         env:
           DEBUG: '@cypress/github-action'
         with:
+          command-prefix: ''
           working-directory: examples/basic
