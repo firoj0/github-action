@@ -120,6 +120,7 @@ jobs:
         continue-on-error: true
         with:
           working-directory: examples/recording
+          command-prefix: 'cypress info && npx'
           record: true
           parallel: true
           group: Recording example
