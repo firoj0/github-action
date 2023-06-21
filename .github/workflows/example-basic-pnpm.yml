@@ -169,6 +169,8 @@ jobs:
         with:
           working-directory: examples/basic-pnpm
           build: npx cypress info
+        env:
+          DEBUG: '@cypress/github-action'
 
   basic-pnpm-ubuntu-22-docker-2:
     runs-on: ubuntu-22.04
@@ -187,24 +189,27 @@ jobs:
         with:
           working-directory: examples/basic-pnpm
           build: npx cypress info
+        env:
+          DEBUG: '@cypress/github-action'
 
   basic-pnpm-ubuntu-22-docker-3:
-      runs-on: ubuntu-22.04
-      container: cypress/browsers:latest
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v3
+    runs-on: ubuntu-22.04
+    container: cypress/browsers:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-        - name: Install pnpm
-          uses: pnpm/action-setup@v2
-          with:
-            version: 8
-
-        - name: Cypress tests
-          uses: ./
-          with:
-            working-directory: examples/basic-pnpm
-            build: npx cypress info
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Cypress tests
+        uses: ./
+        with:
+          working-directory: examples/basic-pnpm
+          build: npx cypress info
+        env:
+          DEBUG: '@cypress/github-action'
 
   basic-pnpm-on-windows:
     runs-on: windows-latest
