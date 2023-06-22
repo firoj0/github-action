@@ -177,10 +177,6 @@ jobs:
     runs-on: ubuntu-22.04
     container: cypress/browsers:node16.16.0-chrome107-ff107
     steps:
-      - name: id
-        run: |
-          id -nu #display user
-          id -ng #display group
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -190,12 +186,39 @@ jobs:
         with:
           version: 8
 
+      - name: Cypress install
+        uses: ./
+        with:
+          working-directory: examples/basic-pnpm
+          runTests: false
+        env:
+          DEBUG: '@cypress/github-action'
+
+      - name: id
+        run: |
+          id -nu #display user
+          id -ng #display group
+
+      - name: Cypress infos
+        run: |
+          npx cypress verify
+          npx cypress info
+        working-directory: examples/basic-pnpm
+
+      - name: github
+        run: ls -al /github
+
+      - name: github/home
+        run: ls -al /github/home
+
+      - name: /github/home/.cache
+        run: ls -al /github/home/.cache
+
       - name: Cypress tests
         uses: ./
         with:
           working-directory: examples/basic-pnpm
-          build: npx cypress verify
-          start: npx cypress info
+          install: false
         env:
           DEBUG: '@cypress/github-action'
 
