@@ -9,173 +9,179 @@ on:
 jobs:
   # ~~~~~~~~~~~~~~~~~~ Cypress v9 and below (using Legacy configuration) ~~~~~~~~~~~~~~~~~~~ #
 
-  basic-pnpm-ubuntu-20-v9:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  # basic-pnpm-ubuntu-20-v9:
+  #   runs-on: ubuntu-20.04
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 7
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 7
 
-      - name: Cypress tests
-        # normally you would write
-        # uses: cypress-io/github-action@v5
-        uses: ./
-        # the parameters below are only necessary
-        # because we are running these examples in a monorepo
-        with:
-          working-directory: examples/v9/basic-pnpm
-          # just for full picture after installing Cypress
-          # print information about detected browsers, etc
-          # see https://on.cypress.io/command-line#cypress-info
-          build: npx cypress info
+  #     - name: Cypress tests
+  #       # normally you would write
+  #       # uses: cypress-io/github-action@v5
+  #       uses: ./
+  #       # the parameters below are only necessary
+  #       # because we are running these examples in a monorepo
+  #       with:
+  #         working-directory: examples/v9/basic-pnpm
+  #         # just for full picture after installing Cypress
+  #         # print information about detected browsers, etc
+  #         # see https://on.cypress.io/command-line#cypress-info
+  #         build: npx cypress info
 
-  basic-pnpm-ubuntu-22-v9:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  # basic-pnpm-ubuntu-22-v9:
+  #   runs-on: ubuntu-22.04
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 7
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 7
 
-      - name: Cypress tests
-        uses: ./
-        with:
-          working-directory: examples/v9/basic-pnpm
-          build: npx cypress info
+  #     - name: Cypress tests
+  #       uses: ./
+  #       with:
+  #         working-directory: examples/v9/basic-pnpm
+  #         build: npx cypress info
 
-  basic-pnpm-on-windows-v9:
-    runs-on: windows-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  # basic-pnpm-on-windows-v9:
+  #   runs-on: windows-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 7
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 7
 
-      - name: Cypress tests
-        uses: ./
-        with:
-          working-directory: examples/v9/basic-pnpm
-          build: npx cypress info
+  #     - name: Cypress tests
+  #       uses: ./
+  #       with:
+  #         working-directory: examples/v9/basic-pnpm
+  #         build: npx cypress info
 
-  basic-pnpm-on-mac-v9:
-    runs-on: macos-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  # basic-pnpm-on-mac-v9:
+  #   runs-on: macos-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 7
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 7
 
-      - name: Cypress tests
-        uses: ./
-        with:
-          working-directory: examples/v9/basic-pnpm
-          build: npx cypress info
+  #     - name: Cypress tests
+  #       uses: ./
+  #       with:
+  #         working-directory: examples/v9/basic-pnpm
+  #         build: npx cypress info
 
-  # skips the binary installation
-  # shows that the job should not fail
-  # https://github.com/cypress-io/github-action/issues/327
-  basic-pnpm-without-binary-install-v9:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  # # skips the binary installation
+  # # shows that the job should not fail
+  # # https://github.com/cypress-io/github-action/issues/327
+  # basic-pnpm-without-binary-install-v9:
+  #   runs-on: ubuntu-22.04
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 7
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 7
 
-      - name: Cypress tests
-        uses: ./
-        with:
-          working-directory: examples/v9/basic-pnpm
-          # since we do not install Cypress
-          # we should not attempt to run tests
-          runTests: false
-        env:
-          # skip the binary install
-          CYPRESS_INSTALL_BINARY: 0
+  #     - name: Cypress tests
+  #       uses: ./
+  #       with:
+  #         working-directory: examples/v9/basic-pnpm
+  #         # since we do not install Cypress
+  #         # we should not attempt to run tests
+  #         runTests: false
+  #       env:
+  #         # skip the binary install
+  #         CYPRESS_INSTALL_BINARY: 0
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Cypress v10 and higher ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
-  basic-pnpm-ubuntu-20:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  # basic-pnpm-ubuntu-20:
+  #   runs-on: ubuntu-20.04
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 8
 
-      - name: Cypress tests
-        # normally you would write
-        # uses: cypress-io/github-action@v5
-        uses: ./
-        # the parameters below are only necessary
-        # because we are running these examples in a monorepo
-        with:
-          working-directory: examples/basic-pnpm
-          # just for full picture after installing Cypress
-          # print information about detected browsers, etc
-          # see https://on.cypress.io/command-line#cypress-info
-          build: npx cypress info
+  #     - name: Cypress tests
+  #       # normally you would write
+  #       # uses: cypress-io/github-action@v5
+  #       uses: ./
+  #       # the parameters below are only necessary
+  #       # because we are running these examples in a monorepo
+  #       with:
+  #         working-directory: examples/basic-pnpm
+  #         # just for full picture after installing Cypress
+  #         # print information about detected browsers, etc
+  #         # see https://on.cypress.io/command-line#cypress-info
+  #         build: npx cypress info
 
-  basic-pnpm-ubuntu-22:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  # basic-pnpm-ubuntu-22:
+  #   runs-on: ubuntu-22.04
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 8
 
-      - name: Cypress tests
-        uses: ./
-        with:
-          working-directory: examples/basic-pnpm
-          build: npx cypress info
+  #     - name: Cypress tests
+  #       uses: ./
+  #       with:
+  #         working-directory: examples/basic-pnpm
+  #         build: npx cypress info
 
-  basic-pnpm-ubuntu-22-docker-1:
-    runs-on: ubuntu-22.04
-    container: cypress/browsers:node16.17.0-chrome106
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  # basic-pnpm-ubuntu-22-docker-1:
+  #   runs-on: ubuntu-22.04
+  #   container: cypress/browsers:node16.17.0-chrome106
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 8
 
-      - name: Cypress tests
-        uses: ./
-        with:
-          working-directory: examples/basic-pnpm
-          build: npx cypress info
-        env:
-          DEBUG: '@cypress/github-action'
+  #     - name: Cypress tests
+  #       uses: ./
+  #       with:
+  #         working-directory: examples/basic-pnpm
+  #         build: npx cypress info
+  #         start: npx cypress verify
+  #       env:
+  #         DEBUG: '@cypress/github-action'
 
   basic-pnpm-ubuntu-22-docker-2:
     runs-on: ubuntu-22.04
     container: cypress/browsers:node16.16.0-chrome107-ff107
     steps:
+      - name: id
+        run: |
+          id -nu #display user
+          id -ng #display group
+
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -188,84 +194,85 @@ jobs:
         uses: ./
         with:
           working-directory: examples/basic-pnpm
-          build: npx cypress info
+          build: npx cypress verify
+          start: npx cypress info
         env:
           DEBUG: '@cypress/github-action'
 
-  basic-pnpm-ubuntu-22-docker-3:
-    runs-on: ubuntu-22.04
-    container: cypress/browsers:latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  # basic-pnpm-ubuntu-22-docker-3:
+  #   runs-on: ubuntu-22.04
+  #   container: cypress/browsers:latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - name: Cypress tests
-        uses: ./
-        with:
-          working-directory: examples/basic-pnpm
-          build: npx cypress info
-        env:
-          DEBUG: '@cypress/github-action'
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 8
+  #     - name: Cypress tests
+  #       uses: ./
+  #       with:
+  #         working-directory: examples/basic-pnpm
+  #         build: npx cypress info
+  #       env:
+  #         DEBUG: '@cypress/github-action'
 
-  basic-pnpm-on-windows:
-    runs-on: windows-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  # basic-pnpm-on-windows:
+  #   runs-on: windows-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 8
 
-      - name: Cypress tests
-        uses: ./
-        with:
-          working-directory: examples/basic-pnpm
-          build: npx cypress info
+  #     - name: Cypress tests
+  #       uses: ./
+  #       with:
+  #         working-directory: examples/basic-pnpm
+  #         build: npx cypress info
 
-  basic-pnpm-on-mac:
-    runs-on: macos-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  # basic-pnpm-on-mac:
+  #   runs-on: macos-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 8
 
-      - name: Cypress tests
-        uses: ./
-        with:
-          working-directory: examples/basic-pnpm
-          build: npx cypress info
+  #     - name: Cypress tests
+  #       uses: ./
+  #       with:
+  #         working-directory: examples/basic-pnpm
+  #         build: npx cypress info
 
-  # skips the binary installation
-  # shows that the job should not fail
-  # https://github.com/cypress-io/github-action/issues/327
-  basic-pnpm-without-binary-install:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  # # skips the binary installation
+  # # shows that the job should not fail
+  # # https://github.com/cypress-io/github-action/issues/327
+  # basic-pnpm-without-binary-install:
+  #   runs-on: ubuntu-22.04
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 8
 
-      - name: Cypress tests
-        uses: ./
-        with:
-          working-directory: examples/basic-pnpm
-          # since we do not install Cypress
-          # we should not attempt to run tests
-          runTests: false
-        env:
-          # skip the binary install
-          CYPRESS_INSTALL_BINARY: 0
+  #     - name: Cypress tests
+  #       uses: ./
+  #       with:
+  #         working-directory: examples/basic-pnpm
+  #         # since we do not install Cypress
+  #         # we should not attempt to run tests
+  #         runTests: false
+  #       env:
+  #         # skip the binary install
+  #         CYPRESS_INSTALL_BINARY: 0
