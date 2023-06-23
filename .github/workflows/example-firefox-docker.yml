@@ -9,6 +9,7 @@ jobs:
       image: cypress/browsers:node18.12.0-chrome106-ff106
     steps:
       - uses: actions/checkout@v3
+      - run: firefox --version
       - uses: cypress-io/github-action@v5
         with:
           browser: firefox
@@ -21,6 +22,7 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v3
+      - run: firefox --version
       - uses: cypress-io/github-action@v5
         with:
           browser: firefox
@@ -33,6 +35,7 @@ jobs:
       options: --user 1000
     steps:
       - uses: actions/checkout@v3
+      - run: firefox --version
       - uses: cypress-io/github-action@v5
         with:
           browser: firefox
