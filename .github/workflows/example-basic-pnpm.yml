@@ -133,6 +133,7 @@ jobs:
 
       - name: id
         run: |
+          id -u #display user numerical
           id -nu #display user
           id -ng #display group
 
@@ -182,6 +183,7 @@ jobs:
 
       - name: id
         run: |
+          id -u #display user numerical
           id -nu #display user
           id -ng #display group
 
