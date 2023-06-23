@@ -132,10 +132,7 @@ jobs:
           DEBUG: '@cypress/github-action'
 
       - name: id
-        run: |
-          id -u #display user numerical
-          id -nu #display user
-          id -ng #display group
+        run: id
 
       - name: Cypress infos
         run: |
@@ -182,10 +179,7 @@ jobs:
           DEBUG: '@cypress/github-action'
 
       - name: id
-        run: |
-          id -u #display user numerical
-          id -nu #display user
-          id -ng #display group
+        run: id
 
       - name: Cypress infos
         run: |
