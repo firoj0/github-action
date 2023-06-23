@@ -3,6 +3,8 @@ on: workflow_dispatch
 jobs:
   firefox-docker-default-user:
     runs-on: ubuntu-22.04
+    env:
+      DEBUG: 'cypress:*'
     container:
       image: cypress/browsers:node18.12.0-chrome106-ff106
     steps:
