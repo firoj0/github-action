@@ -4,7 +4,7 @@ jobs:
   firefox-docker-default-user:
     runs-on: ubuntu-22.04
     env:
-      DEBUG: 'cypress-verbose:launcher:detect,cypress:launcher:detect'
+      DEBUG: 'cypress-verbose:launcher:*,cypress:launcher:*'
     container:
       image: cypress/browsers:node18.12.0-chrome106-ff106
     steps:
