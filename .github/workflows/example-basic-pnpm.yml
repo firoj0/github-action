@@ -111,69 +111,55 @@ jobs:
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Cypress v10 and higher ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
-  # basic-pnpm-ubuntu-20:
-  #   runs-on: ubuntu-20.04
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
+  basic-pnpm-ubuntu-22:
+    runs-on: ubuntu-22.04
+    steps:
 
-  #     - name: Install pnpm
-  #       uses: pnpm/action-setup@v2
-  #       with:
-  #         version: 8
+      - name: Checkout
+        uses: actions/checkout@v3
 
-  #     - name: Cypress tests
-  #       # normally you would write
-  #       # uses: cypress-io/github-action@v5
-  #       uses: ./
-  #       # the parameters below are only necessary
-  #       # because we are running these examples in a monorepo
-  #       with:
-  #         working-directory: examples/basic-pnpm
-  #         # just for full picture after installing Cypress
-  #         # print information about detected browsers, etc
-  #         # see https://on.cypress.io/command-line#cypress-info
-  #         build: npx cypress info
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
 
-  # basic-pnpm-ubuntu-22:
-  #   runs-on: ubuntu-22.04
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
+      - name: Cypress install
+        uses: ./
+        with:
+          working-directory: examples/basic-pnpm
+          runTests: false
+        env:
+          DEBUG: '@cypress/github-action'
 
-  #     - name: Install pnpm
-  #       uses: pnpm/action-setup@v2
-  #       with:
-  #         version: 8
+      - name: id
+        run: |
+          id -nu #display user
+          id -ng #display group
 
-  #     - name: Cypress tests
-  #       uses: ./
-  #       with:
-  #         working-directory: examples/basic-pnpm
-  #         build: npx cypress info
+      - name: Cypress infos
+        run: |
+          npx cypress verify
+          npx cypress info
+        working-directory: examples/basic-pnpm
 
-  # basic-pnpm-ubuntu-22-docker-1:
-  #   runs-on: ubuntu-22.04
-  #   container: cypress/browsers:node16.17.0-chrome106
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
+      - name: home
+        run: ls -al /home
 
-  #     - name: Install pnpm
-  #       uses: pnpm/action-setup@v2
-  #       with:
-  #         version: 8
+      - name: /home/runner
+        run: ls -al /home/runner
 
-  #     - name: Cypress tests
-  #       uses: ./
-  #       with:
-  #         working-directory: examples/basic-pnpm
-  #         build: npx cypress info
-  #         start: npx cypress verify
-  #       env:
-  #         DEBUG: '@cypress/github-action'
+      - name: /home/runner/.cache
+        run: ls -al /home/runner/.cache
 
-  basic-pnpm-ubuntu-22-docker-2:
+      - name: Cypress tests
+        uses: ./
+        with:
+          working-directory: examples/basic-pnpm
+          install: false
+        env:
+          DEBUG: '@cypress/github-action'
+
+  basic-pnpm-ubuntu-22-docker:
     runs-on: ubuntu-22.04
     container: cypress/browsers:node16.16.0-chrome107-ff107
     steps:
@@ -221,42 +207,6 @@ jobs:
           install: false
         env:
           DEBUG: '@cypress/github-action'
-
-  # basic-pnpm-ubuntu-22-docker-3:
-  #   runs-on: ubuntu-22.04
-  #   container: cypress/browsers:latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-
-  #     - name: Install pnpm
-  #       uses: pnpm/action-setup@v2
-  #       with:
-  #         version: 8
-  #     - name: Cypress tests
-  #       uses: ./
-  #       with:
-  #         working-directory: examples/basic-pnpm
-  #         build: npx cypress info
-  #       env:
-  #         DEBUG: '@cypress/github-action'
-
-  # basic-pnpm-on-windows:
-  #   runs-on: windows-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-
-  #     - name: Install pnpm
-  #       uses: pnpm/action-setup@v2
-  #       with:
-  #         version: 8
-
-  #     - name: Cypress tests
-  #       uses: ./
-  #       with:
-  #         working-directory: examples/basic-pnpm
-  #         build: npx cypress info
 
   # basic-pnpm-on-mac:
   #   runs-on: macos-latest
