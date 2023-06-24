@@ -139,7 +139,7 @@ jobs:
           npx cypress verify
           npx cypress info
         working-directory: examples/basic-pnpm
-
+      - run: echo $HOME
       - name: home
         run: ls -al /home
 
@@ -186,7 +186,7 @@ jobs:
           npx cypress verify
           npx cypress info
         working-directory: examples/basic-pnpm
-
+      - run: echo $HOME
       - name: github
         run: ls -al /github
 
