@@ -12,6 +12,40 @@ jobs:
           browser: chrome
           working-directory: examples/browser
 
+  docker-browsers-16:
+    runs-on: ubuntu-22.04
+    container: cypress/browsers:node16.16.0-chrome107-ff107
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          working-directory: examples/browser
+
+  docker-browsers-1002:
+    runs-on: ubuntu-22.04
+    container:
+      image: cypress/browsers:latest
+      options: --user 1002
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          working-directory: examples/browser
+
+  docker-browsers-16-1002:
+    runs-on: ubuntu-22.04
+    container:
+      image: cypress/browsers:node16.16.0-chrome107-ff107
+      options: --user 1002
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          working-directory: examples/browser
+
   docker-included:
     runs-on: ubuntu-22.04
     container: cypress/included:latest
