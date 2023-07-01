@@ -22,11 +22,11 @@ jobs:
           browser: chrome
           working-directory: examples/browser
 
-  docker-browsers-1002:
+  docker-browsers-1000:
     runs-on: ubuntu-22.04
     container:
       image: cypress/browsers:latest
-      options: --user 1002
+      options: --user 1000
     steps:
       - uses: actions/checkout@v3
       - uses: cypress-io/github-action@v5
@@ -34,11 +34,11 @@ jobs:
           browser: chrome
           working-directory: examples/browser
 
-  docker-browsers-16-1002:
+  docker-browsers-16-1000:
     runs-on: ubuntu-22.04
     container:
       image: cypress/browsers:node16.16.0-chrome107-ff107
-      options: --user 1002
+      options: --user 1000
     steps:
       - uses: actions/checkout@v3
       - uses: cypress-io/github-action@v5
