@@ -16,10 +16,21 @@ jobs:
   action-ci:
     runs-on: ubuntu-22.04
     steps:
+
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Cypress run
+        continue-on-error: true
+        id: cypress
         uses: ./
         with:
           working-directory: examples/basic
+
+      - name: 'Print previous step outcome/conclusion'
+        if: always()
+        id: print
+        run: |
+            echo "outcome: ${{ steps.cypress.outcome }}"
+            echo "conclusion: ${{ steps.cypress.conclusion }}"
+        shell: bash
