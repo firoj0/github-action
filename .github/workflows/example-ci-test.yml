@@ -2,18 +2,12 @@ name: example-ci-test
 on:
   workflow_dispatch:
 
+env:
+  DEBUG: '@cypress/github-action'
+
 jobs:
-  ci-standalone:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: npm ci
-        working-directory: examples/basic
-
-  action-ci:
+  pass-example:
     runs-on: ubuntu-22.04
     steps:
 
@@ -21,11 +15,11 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Cypress run
-        continue-on-error: true
         id: cypress
         uses: ./
         with:
           working-directory: examples/basic
+          spec: cypress/e2e/pass.cy.js
 
       - name: 'Print previous step outcome/conclusion'
         if: always()
@@ -33,4 +27,24 @@ jobs:
         run: |
             echo "outcome: ${{ steps.cypress.outcome }}"
             echo "conclusion: ${{ steps.cypress.conclusion }}"
-        shell: bash
+
+  fail-example:
+    runs-on: ubuntu-22.04
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cypress run
+        id: cypress
+        uses: ./
+        with:
+          working-directory: examples/basic
+          spec: cypress/e2e/fail.cy.js
+
+      - name: 'Print previous step outcome/conclusion'
+        if: always()
+        id: print
+        run: |
+            echo "outcome: ${{ steps.cypress.outcome }}"
+            echo "conclusion: ${{ steps.cypress.conclusion }}"
