@@ -6,6 +6,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+env:
+  DEBUG: '@cypress/github-action'
+
 jobs:
 
   # ~~~~~~~~~~~~~~~~~~ Cypress v9 and below (using Legacy configuration) ~~~~~~~~~~~~~~~~~~~ #
@@ -21,7 +24,7 @@ jobs:
         with:
           working-directory: examples/v9/yarn-modern
           # https://yarnpkg.com/cli/install
-          install-command: yarn install
+#          install-command: yarn install
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Cypress v10 and higher ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
@@ -36,4 +39,4 @@ jobs:
         with:
           working-directory: examples/yarn-modern
           # https://yarnpkg.com/cli/install
-          install-command: yarn install
+ #         install-command: yarn install
