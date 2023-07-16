@@ -24,5 +24,5 @@ jobs:
         with:
           working-directory: examples/yarn-modern-pnp
           # https://yarnpkg.com/cli/install
-          install-command: yarn install
+#          install-command: yarn install
 #          command: yarn cypress run
