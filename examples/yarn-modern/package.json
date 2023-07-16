@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Install Yarn dependencies using custom command",
   "scripts": {
+    "cypress": "cypress open",
     "test": "cypress run"
   },
   "private": true,
