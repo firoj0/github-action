@@ -19,4 +19,4 @@ jobs:
         with:
           working-directory: examples/yarn-modern-pnpm
           # https://yarnpkg.com/cli/install
-          install-command: yarn install
+#          install-command: yarn install
