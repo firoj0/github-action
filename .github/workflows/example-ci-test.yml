@@ -9,6 +9,7 @@ jobs:
 
   pass-example:
     runs-on: ubuntu-22.04
+    if: always()
     steps:
 
       - name: Checkout
@@ -28,8 +29,31 @@ jobs:
             echo "outcome: ${{ steps.cypress.outcome }}"
             echo "conclusion: ${{ steps.cypress.conclusion }}"
 
+  pass-example-command:
+    runs-on: ubuntu-22.04
+    if: always()
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cypress run
+        id: cypress
+        uses: ./
+        with:
+          working-directory: examples/basic
+          command: npx cypress run -s cypress/e2e/pass.cy.js
+
+      - name: 'Print previous step outcome/conclusion'
+        if: always()
+        id: print
+        run: |
+            echo "outcome: ${{ steps.cypress.outcome }}"
+            echo "conclusion: ${{ steps.cypress.conclusion }}"
+
   fail-example:
     runs-on: ubuntu-22.04
+    if: always()
     steps:
 
       - name: Checkout
@@ -41,6 +65,28 @@ jobs:
         with:
           working-directory: examples/basic
           spec: cypress/e2e/fail.cy.js
+
+      - name: 'Print previous step outcome/conclusion'
+        if: always()
+        id: print
+        run: |
+            echo "outcome: ${{ steps.cypress.outcome }}"
+            echo "conclusion: ${{ steps.cypress.conclusion }}"
+
+  fail-example-command:
+    runs-on: ubuntu-22.04
+    if: always()
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cypress run
+        id: cypress
+        uses: ./
+        with:
+          working-directory: examples/basic
+          command: npx cypress run -s cypress/e2e/fail.cy.js
 
       - name: 'Print previous step outcome/conclusion'
         if: always()
