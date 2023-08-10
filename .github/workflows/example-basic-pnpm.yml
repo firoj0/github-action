@@ -204,6 +204,53 @@ jobs:
         env:
           DEBUG: '@cypress/github-action'
 
+  basic-pnpm-ubuntu-22-docker-latest:
+    runs-on: ubuntu-22.04
+    container: cypress/browsers:latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Cypress install
+        uses: ./
+        with:
+          working-directory: examples/basic-pnpm
+          runTests: false
+        env:
+          DEBUG: '@cypress/github-action'
+
+      - name: id
+        run: id
+
+      - name: Cypress infos
+        run: |
+          npx cypress verify
+          npx cypress info
+        working-directory: examples/basic-pnpm
+      - run: echo $HOME
+      - name: github
+        run: ls -al /github
+
+      - name: github/home
+        run: ls -al /github/home
+
+      - name: /github/home/.cache
+        run: ls -al /github/home/.cache
+
+      - name: Cypress tests
+        uses: ./
+        with:
+          working-directory: examples/basic-pnpm
+          install: false
+        env:
+          DEBUG: '@cypress/github-action'
+
   # basic-pnpm-on-mac:
   #   runs-on: macos-latest
   #   steps:
