@@ -9,5 +9,8 @@
   "private": true,
   "devDependencies": {
     "cypress": "13.3.0"
+  },
+  "engines": {
+    "node": "18.18.1"
   }
 }
