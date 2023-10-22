@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  DEBUG: 'cypress:*'
+  DEBUG: 'cypress:network:*,cypress:launcher:*'
 
 jobs:
   tests:
