@@ -6,15 +6,31 @@ on:
   pull_request:
   workflow_dispatch:
 
+env:
+  NODE_OPTIONS: '--trace-deprecation'
+
 jobs:
 
   yarn-classic:
     runs-on: ubuntu-22.04
     steps:
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 21
+      - run: node -v
+      - run: npm -v
+
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: install with Yarn
+        run: |
+          cd examples/yarn-classic
+          yarn
+
       - name: Test with Yarn Classic
-        uses: ./
+        uses: cypress-io/github-action@v6
         with:
+          install: false
           working-directory: examples/yarn-classic
