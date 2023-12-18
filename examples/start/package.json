@@ -6,7 +6,7 @@
   "scripts": {
     "test": "cypress run",
     "build": "echo building ... server ... done!",
-    "start": "serve public",
+    "start": "serve pub",
     "start2": "serve -p 8000 public"
   },
   "private": true,

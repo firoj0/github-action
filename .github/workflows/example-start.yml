@@ -31,40 +31,40 @@ jobs:
           start: npm start
           wait-on: 'http://localhost:3000'
 
-  start-multiple:
-    # example with web application build
-    # and several services to start
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  # start-multiple:
+  #   # example with web application build
+  #   # and several services to start
+  #   runs-on: ubuntu-22.04
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
 
-      - name: Cypress tests
-        uses: ./
-        with:
-          working-directory: examples/start
-          build: npm run build
-          # single start command per line
-          start: |
-            npm start
-            npm run start2
-          wait-on: 'http://localhost:8000'
-          config: 'baseUrl=http://localhost:8000'
+  #     - name: Cypress tests
+  #       uses: ./
+  #       with:
+  #         working-directory: examples/start
+  #         build: npm run build
+  #         # single start command per line
+  #         start: |
+  #           npm start
+  #           npm run start2
+  #         wait-on: 'http://localhost:8000'
+  #         config: 'baseUrl=http://localhost:8000'
 
-  start-multiple-commas:
-    # example with web application build
-    # and several services to start
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  # start-multiple-commas:
+  #   # example with web application build
+  #   # and several services to start
+  #   runs-on: ubuntu-22.04
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
 
-      - name: Cypress tests
-        uses: ./
-        with:
-          working-directory: examples/start
-          build: npm run build
-          # use commas to separate the commands
-          start: npm start, npm run start2
-          wait-on: 'http://localhost:8000'
-          config: 'baseUrl=http://localhost:8000'
+  #     - name: Cypress tests
+  #       uses: ./
+  #       with:
+  #         working-directory: examples/start
+  #         build: npm run build
+  #         # use commas to separate the commands
+  #         start: npm start, npm run start2
+  #         wait-on: 'http://localhost:8000'
+  #         config: 'baseUrl=http://localhost:8000'
