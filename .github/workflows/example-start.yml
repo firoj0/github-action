@@ -11,6 +11,7 @@ env:
   # works around issue when more than one instance of serve is started
   # See PR https://github.com/vercel/serve/pull/457
   NO_UPDATE_CHECK: 1
+  DEBUG: '@cypress/github-action'
 
 jobs:
 
