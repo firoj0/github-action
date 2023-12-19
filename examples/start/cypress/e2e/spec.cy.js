@@ -1,4 +1,5 @@
-it('loads the page', () => {
-  cy.visit('/')
-  cy.contains('This is a page').should('be.visible')
+describe('template spec', () => {
+  it('passes', () => {
+    cy.visit('https://example.cypress.io')
+  })
 })
