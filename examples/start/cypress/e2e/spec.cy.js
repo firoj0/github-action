@@ -1,5 +1,5 @@
-describe('template spec', () => {
-  it('passes', () => {
-    cy.visit('https://example.cypress.io')
+describe('spec', () => {
+  it('forced failure', () => {
+    assert.fail("forced failure")
   })
 })
