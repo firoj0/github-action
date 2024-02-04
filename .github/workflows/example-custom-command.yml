@@ -1,4 +1,17 @@
 name: example-custom-command
+#
+# This workflow demonstrates the advanced use of the 'command' parameter
+# to execute a shell command.
+#
+# Note that this bypasses the normal working of the action and most other
+# action parameters are then ignored!
+#
+# In this example, the required Cypress parameters (browser and spec) are
+# set in the source of the JavaScript examples/custom-command/index.js file.
+# Apart from the parameters 'command' and 'working-directory', no other action
+# parameters are used in the workflow. Other parameters (for instance
+# 'browser' and 'spec') would be ignored if they were to be defined in the workflow.
+#
 on:
   push:
     branches:
@@ -9,8 +22,6 @@ on:
 jobs:
 
   start:
-    # example where instead of forming the default "cypress run ..."
-    # the user can specify their own command
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout 🛎
@@ -19,8 +30,15 @@ jobs:
       - name: Custom tests 🧪
         uses: ./
         with:
-          command: npm run custom-test
+          #
+          # The command 'node .' runs the default 'main' entry 'index.js'
+          # defined in examples/custom-command/package.json
+          #
+          command: node .
           working-directory: examples/custom-command
 
       - name: Show saved file 🖨
+          #
+          # index.js contains code which writes the file 'results.json'
+          #
         run: cat examples/custom-command/results.json
