@@ -29,4 +29,5 @@ jobs:
 
       - uses: ./
         with:
+          node-version: 16
           working-directory: examples/node-versions
