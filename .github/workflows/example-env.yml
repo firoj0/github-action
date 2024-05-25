@@ -12,6 +12,8 @@ env:
   # Cypress.env('environmentName') // 'staging'
   # see https://on.cypress.io/env
   CYPRESS_environmentName: staging
+  DEBUG: '@cypress/github-action'
+
 jobs:
 
   e2e:
