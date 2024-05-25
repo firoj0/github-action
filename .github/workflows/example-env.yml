@@ -87,3 +87,5 @@ jobs:
           env: host=http://api.dev.local
           working-directory: examples/env
           spec: cypress/e2e/spec.cy.js
+      - name: show everthing
+        uses: hmarr/debug-action@v3
