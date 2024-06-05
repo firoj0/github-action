@@ -8,9 +8,9 @@ jobs:
     container:
       image: cypress/browsers:node18.12.0-chrome106-ff106
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: firefox --version
-      - uses: cypress-io/github-action@v5
+      - uses: cypress-io/github-action@v6
         if: always()
         with:
           browser: firefox
@@ -22,9 +22,9 @@ jobs:
       image: cypress/browsers:node18.12.0-chrome106-ff106
       options: --user 1001
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: firefox --version
-      - uses: cypress-io/github-action@v5
+      - uses: cypress-io/github-action@v6
         with:
           browser: firefox
           working-directory: examples/browser
@@ -35,10 +35,10 @@ jobs:
       image: cypress/browsers:node18.12.0-chrome106-ff106
       options: --user 1000
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: firefox --version
         if: always()
-      - uses: cypress-io/github-action@v5
+      - uses: cypress-io/github-action@v6
         with:
           browser: firefox
           working-directory: examples/browser
