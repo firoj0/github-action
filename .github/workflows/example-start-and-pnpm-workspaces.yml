@@ -42,6 +42,7 @@ jobs:
         with:
           working-directory: examples/start-and-pnpm-workspaces
           runTests: false
+          command: pnpm cypress install # make doubly sure cypress binary is installed
 
       - name: Cypress test Single
         # Run Cypress in examples/start-and-pnpm-workspaces/packages/workspace-1 only
