@@ -15,7 +15,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Chrome through puppeteer
-        run: npx @puppeteer/browsers install chrome@stable
+        run: npx @puppeteer/browsers install chrome@129
+        working-directory: examples/browser
 
       - name: Chrome headless
         uses: ./
