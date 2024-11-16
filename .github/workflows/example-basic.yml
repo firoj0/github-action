@@ -19,6 +19,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - run: npm install
+        working-directory: examples/basic
+
       - name: Cypress tests
         # normally you would write
         # uses: cypress-io/github-action@v6
@@ -31,3 +34,4 @@ jobs:
           # print information about detected browsers, etc
           # see https://on.cypress.io/command-line#cypress-info
           build: npx cypress info
+          install: false
