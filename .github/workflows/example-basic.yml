@@ -19,8 +19,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - run: npm install
+      - run: npm install --foreground-scripts
         working-directory: examples/basic
+        env:
+          DEBUG: 'cypress:cli'
 
       - name: Cypress tests
         # normally you would write
