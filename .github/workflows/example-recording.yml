@@ -35,14 +35,9 @@ jobs:
             echo "defined=false" >> $GITHUB_OUTPUT;
           fi
 
-  parallel:
+  single:
     runs-on: ubuntu-24.04
     needs: [check-record-key]
-    strategy:
-      fail-fast: false
-      matrix:
-        # run copies of the current job in parallel
-        containers: [1, 2]
     if: needs.check-record-key.outputs.record-key-exists == 'true'
     steps:
       - name: Checkout
@@ -58,8 +53,6 @@ jobs:
         with:
           working-directory: examples/recording
           record: true
-          parallel: true
-          group: Recording example
           tag: action
 
       # see "outcome" and "conclusion" of a step doc
@@ -70,21 +63,3 @@ jobs:
         run: |
           echo Cypress finished with: ${{ steps.cypress.outcome }}
           echo See results at ${{ steps.cypress.outputs.resultsUrl }}
-
-  group:
-    runs-on: ubuntu-24.04
-    needs: [check-record-key]
-    if: needs.check-record-key.outputs.record-key-exists == 'true'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Cypress tests
-        # normally you would write
-        # uses: cypress-io/github-action@v6
-        uses: ./
-        with:
-          working-directory: examples/recording
-          record: true
-          # no parallel flag, just the group name
-          group: Recording group
